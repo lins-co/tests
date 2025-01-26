@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const productRoutes = require('./routes/products');
+const whatsappMessage = require('./routes/whatsappMessage')
 
 const app = express();
 
@@ -20,6 +21,7 @@ mongoose.connect('mongodb+srv://test:db_test@server.fgqqt.mongodb.net/clinicDB?r
 
 // Routes
 app.use('/api/products', productRoutes);
+app.use('/webhoook', whatsappMessage);
 
 // Start Server
 const PORT = process.env.PORT || 3023;
