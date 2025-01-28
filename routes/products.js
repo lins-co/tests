@@ -75,6 +75,16 @@ router.get('/', async (req, res) => {
   }
 });
 
-
+router.get('/:id', async (req, res) => {
+  try {
+    const product = await Product.findOne({ id: req.params.id }); // Fetch product by ID
+    if (!product) {
+      return res.status(404).json({ message: 'Product not found' }); // Handle case where product doesn't exist
+    }
+    res.status(200).json(product); // Return the product details
+  } catch (error) {
+    res.status(500).json({ message: error.message }); // Handle errors
+  }
+});
 
 module.exports = router;
