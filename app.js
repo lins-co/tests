@@ -7,9 +7,8 @@ require('dotenv').config(); // Load environment variables
 
 const app = express();
 
-// Middleware
 app.use(bodyParser.json());
-app.use(cors());
+app.use(cors({ origin: '*' }));
 
 // Database Connection
 mongoose.connect('mongodb+srv://test:db_test@server.fgqqt.mongodb.net/clinicDB?retryWrites=true&w=majority', {
