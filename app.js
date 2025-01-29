@@ -8,7 +8,12 @@ require('dotenv').config(); // Load environment variables
 const app = express();
 
 app.use(bodyParser.json());
-app.use(cors({ origin: '*' }));
+app.use(cors({
+  origin: '*',  // Allow all origins (for testing, restrict in production)
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: '*',  // Allow all headers
+}));
+
 
 // Database Connection
 mongoose.connect('mongodb+srv://test:db_test@server.fgqqt.mongodb.net/clinicDB?retryWrites=true&w=majority', {
